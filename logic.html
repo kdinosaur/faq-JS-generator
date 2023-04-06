@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <script>
+        //document.addEventListener("DOMContentLoaded", function() {
+        function populateFaq() {
+            const FAQarr = [
+                {"question" : "How will I save by participating in this program?",
+                    "answer" : "This is a flat rate program that will cost $XXX per semester versus purchasing individual textbooks. Having easy access to required course materials by the first day of class means students have more time to focus on preparing for classes instead of spending time sourcing textbooks."},
+                {"question" : "How will I get my books?",
+                "answer" : "answer2"},
+                {"question" : "How much is the cost?",
+                "answer" : "answer3"}
+            ];
+
+            let HTMLstring = '';
+
+            FAQarr.forEach(index => {
+                Object.keys(index).forEach(key => {
+                    if (key === 'question') {
+                        HTMLstring += '<details class ="style3"><summary>' + index[key] + '</summary>';
+                    }
+                    if (key === 'answer') {
+                        HTMLstring += '<div class = "content"><p>' + index[key] + '</p></div></details>'
+                    }
+                });
+            });
+
+            document.getElementById('replaceMe').innerHTML = HTMLstring;
+
+        }
+    </script>
+    <style>
+        /* The Rotating Marker */
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+        summary::before {
+            content: "▶";
+            position: absolute;
+            top: 1rem;
+            left: 0.8rem;
+            transform: rotate(0);
+            transform-origin: center;
+            transition: 0.2s transform ease;
+        }
+        details[open] > summary:before {
+            transform: rotate(90deg);
+            transition: 0.45s transform ease;
+        }
+
+        /* Style 3 */
+        details.style3 summary::before {
+            content: "›";
+            font-size: 2.5rem;
+            line-height: 1rem;
+            top: 1.3rem;
+            left: 0rem;
+            margin: -0.5rem -0.5rem 0 0.5rem;
+            transform-origin: bottom center;
+            transition: margin linear 0.05s;
+        }
+        details.style3:hover > summary:before {
+            color: #FFF;
+        }
+        details[open].style3 > summary:before {
+            left: 0rem;
+            color: #CCC;
+            transform: rotate(90deg);
+            margin-left: 0.4rem;
+            transition: color ease 2s, transform ease 1s, margin ease 1s;
+        }
+        @supports (-webkit-touch-callout: none) {
+            details.style3 summary::before {
+                top: 1.6rem;
+            }
+            details[open].style3 > summary:before {
+                top: 1.3rem;
+                transition: all 0.8s;
+            }
+        }
+
+        /* Summary and Details Styling */
+        body {
+            font-family: "Roboto", sans-serif;
+        }
+        img {
+            max-width: 100%;
+        }
+        p {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+        p:last-child {
+            padding: 0;
+        }
+        details {
+            max-width: none;
+            box-sizing: border-box;
+            margin-top: 5px;
+            background: white;
+        }
+        summary {
+            border: 4px solid transparent;
+            outline: none;
+            padding: 1rem 1rem 1rem 2.2rem;
+            display: block;
+            background: #3a3a3a;
+            border-radius: 8px;
+            color: white;
+            position: relative;
+            cursor: pointer;
+        }
+        details[open] summary,
+        summary:hover {
+            color: white;
+            background: #444;
+        }
+        summary:hover strong,
+        details[open] summary strong,
+        summary:hover::before,
+        details[open] summary::before {
+            color: #FFA128;
+        }
+        .content {
+            padding: 10px;
+            border: 2px solid #888;
+            border-top: none;
+            border-bottom-right-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+
+
+
+
+        /* Custom styles
+        body {
+          background-color: #f8f9fa;
+          font-family: Arial, sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          font-family: inherit;
+          font-weight: bold;
+          margin-top: 1.5rem;
+        }
+        p {
+          font-size: 1.3rem;
+          line-height: 1.3;
+          margin-bottom: 1.3rem;
+        } */
+
+        .card-body p {
+            font-size: 1.3rem;
+            line-height: 1.3;
+            margin-bottom: 1rem;
+            padding-left: 1em;
+        }
+
+        .card-body h2 {
+            font-weight: bold;
+        }
+
+        .main-text p {
+            font-size: 1.3rem;
+            padding-left: 1em;
+            padding-right:1em;
+        }
+
+        .main-text h1 {
+            padding-left: 0.5em;
+            font-style: normal;
+        }
+
+        .faq-page-text h2 {
+            padding-left: 0.5em;
+            font-style: normal;
+            text-align: center;
+        }
+
+
+
+    </style>
+
+
+
+
+
+
+<body>
+
+<div class="col-md-12 col-lg-12 mb-4">
+    <div class="image-block" id="image-1">
+        <img src="https://placekitten.com/1200/400" alt="Image 1" class="img-fluid"><div class="overlay">
+    </div>
+    </div>
+</div>
+
+
+<br>
+<div class="main-text">
+    <h1>Frequently Asked Questions</h1>
+</div>
+<br>
+
+<div class="faq-page-text">
+    <h2><strong>Student/Family FAQs</strong></h2>
+    <hr>
+    <br>
+</div>
+
+<div id = "replaceMe"></div>
+
+<br>
+<br>
+</body>
+</html>
