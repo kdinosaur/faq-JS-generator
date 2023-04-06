@@ -2,9 +2,12 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
 
     <script>
         //document.addEventListener("DOMContentLoaded", function() {
@@ -20,13 +23,16 @@
 
             let HTMLstring = '';
 
-            FAQarr.forEach(index => {
-                Object.keys(index).forEach(key => {
+//Create an array of objects, loop thru each. For each table in the array, loop thru each key
+//Each object is made up of a Table (question), and key (answer)
+
+            FAQarr.forEach(table => {
+                Object.keys(table).forEach(key => {
                     if (key === 'question') {
-                        HTMLstring += '<details class ="style3"><summary>' + index[key] + '</summary>';
+                        HTMLstring += '<details class ="style3"><summary>' + table[key] + '</summary>';
                     }
                     if (key === 'answer') {
-                        HTMLstring += '<div class = "content"><p>' + index[key] + '</p></div></details>'
+                        HTMLstring += '<div class = "content"><p>' + table[key] + '</p></div></details>'
                     }
                 });
             });
@@ -193,6 +199,9 @@
 
 
 <body>
+
+<!-- Hack to get script to fire-->
+<img src="https://beta.cubookstore.com/Images/Pix.gif" onLoad="populateFaq()">
 
 <div class="col-md-12 col-lg-12 mb-4">
     <div class="image-block" id="image-1">
