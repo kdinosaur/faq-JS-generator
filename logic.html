@@ -27,12 +27,12 @@
 //Each object is made up of a Table (question), and key (answer)
 
             FAQarr.forEach(table => {
-                Object.keys(table).forEach(key => {
-                    if (key === 'question') {
-                        HTMLstring += '<details class ="style3"><summary>' + table[key] + '</summary>';
+                Object.keys(table).forEach(data => {
+                    if (data === 'question') {
+                        HTMLstring += '<details class ="style3"><summary>' + table[data] + '</summary>';
                     }
-                    if (key === 'answer') {
-                        HTMLstring += '<div class = "content"><p>' + table[key] + '</p></div></details>'
+                    if (data === 'answer') {
+                        HTMLstring += '<div class = "content"><p>' + table[data] + '</p></div></details>'
                     }
                 });
             });
